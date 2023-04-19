@@ -1,0 +1,13 @@
+#
+# Copyright (C) 2022 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Reserve
+/dev/block/bootdevice/by-name/xiaomireserve1               0660   root     system
+/dev/block/bootdevice/by-name/xiaomireserve3               0660   root     system
+/dev/block/bootdevice/by-name/xiaomireserve5               0660   root     system
+
+# WiFi
+firmware_directories /odm/etc/wifi/

@@ -1,0 +1,32 @@
+<manifest version="2.0" type="device">
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.appradio</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IxiaomiAppRadio</name>
+            <instance>xiaomi_app_slot1</instance>
+            <instance>xiaomi_app_slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.ims</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IxiaomiImsRadio</name>
+            <instance>xiaomiimsradio0</instance>
+            <instance>xiaomiimsradio1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.radio</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IxiaomiRadio</name>
+            <instance>xiaomi_slot1</instance>
+            <instance>xiaomi_slot2</instance>
+        </interface>
+    </hal>
+</manifest>

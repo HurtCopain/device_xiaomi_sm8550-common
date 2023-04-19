@@ -1,0 +1,70 @@
+<compatibility-matrix version="2.0" type="framework">
+    <hal format="hidl" optional="true">
+        <name>vendor.nxp.nxpnfc</name>
+        <version>2.0</version>
+        <interface>
+            <name>INxpNfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.appradio</name>
+        <version>1.0</version>
+        <interface>
+            <name>IxiaomiAppRadio</name>
+            <instance>xiaomi_app_slot1</instance>
+            <instance>xiaomi_app_slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.biometrics.fingerprint</name>
+        <version>2.1</version>
+        <interface>
+            <name>IBiometricsFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.ims</name>
+        <version>1.0</version>
+        <interface>
+            <name>IxiaomiImsRadio</name>
+            <instance>xiaomiimsradio0</instance>
+            <instance>xiaomiimsradio1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.radio</name>
+        <version>1.0-1</version>
+        <interface>
+            <name>IxiaomiRadio</name>
+            <instance>xiaomi_slot1</instance>
+            <instance>xiaomi_slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.pixelworks.hardware.display</name>
+        <version>1.1</version>
+        <interface>
+            <name>IIris</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.pixelworks.hardware.feature</name>
+        <version>1.0</version>
+        <interface>
+            <name>IIrisFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.camera.cameraextension</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICameraExtensionService</name>
+            <instance>cameraextensionservice</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>

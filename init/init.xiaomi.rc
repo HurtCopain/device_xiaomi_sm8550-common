@@ -1,0 +1,71 @@
+#
+# Copyright (C) 2022 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+on fs
+    # Update touchpanel firmware in case we ship newer firmware in /odm
+    write /proc/touchpanel/tp_fw_update 0
+
+on early-boot
+    # SSR
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys3/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys4/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys5/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys6/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys7/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys8/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys9/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys10/restart_level RELATED
+
+on boot
+    # Display
+    chown system system /dev/xiaomi_display
+    chown system system /sys/kernel/xiaomi_display/dimlayer_bl_en
+    chown system system /sys/kernel/xiaomi_display/dynamic_osc_clock
+    chown system system /sys/kernel/xiaomi_display/hbm
+    chown system system /sys/kernel/xiaomi_display/notify_fppress
+    chown system system /sys/kernel/xiaomi_display/notify_panel_blank
+    chown system system /sys/kernel/xiaomi_display/power_status
+    chown system system /sys/kernel/xiaomi_display/panel_id
+    chown system system /sys/kernel/xiaomi_display/panel_serial_number
+
+    # Sensors
+    chown system system /sys/devices/platform/soc/soc:sensor_fb/adsp_notify
+
+    # TOF
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/alg_setting
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/app0_apply_fac_calib
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/app0_clk_iterations
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/app0_clk_trim_set
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/app0_get_distance
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/app0_get_fac_calib
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/app0_read_peak_crosstalk
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/capture
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/iterations
+    chown cameraserver cameraserver /sys/kernel/tof_control/app0/period
+    chown cameraserver cameraserver /sys/kernel/tof_control/chip_enable
+    chown cameraserver cameraserver /sys/kernel/tof_control/driver_debug
+
+on property:ro.boot.prjname=*
+    # Display
+    setprop ro.separate.soft ${ro.boot.prjname}
+
+on property:sys.boot_completed=1
+    # Display
+    copy /vendor/etc/xiaomi_QC_LTM_SM8550_2022_10_13.pfm /mnt/vendor/persist/data/pfm/licenses/xiaomi_QC_LTM_SM8550_2022_10_13.pfm
+    copy /vendor/etc/xiaomi_QC_LTM_Dev_2020_10_30.pfm /mnt/vendor/persist/data/pfm/licenses/1000-1000-no-exp-1186717196.pfm
+    copy /vendor/etc/xiaomi_Widevine_licenses.pfm /mnt/vendor/persist/data/pfm/licenses/xiaomi_Widevine_licenses.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/xiaomi_QC_LTM_SM8550_2022_10_13.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/1000-1000-no-exp-1186717196.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/xiaomi_Widevine_licenses.pfm
+
+service xiaomi_sensor_fb /odm/bin/xiaomi_sensor_fb
+    user system
+    group system
+    class late_start
+    oneshot
